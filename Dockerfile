@@ -2,7 +2,7 @@ FROM mandu/drone-android511
 
 RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 04EE7237B7D453EC && \
     apt-get update -y && \
-    apt-get install -y curl && \
+    apt-get install -y curl binutils:2.26 && \
     curl -s https://packages.gitlab.com/install/repositories/runner/gitlab-ci-multi-runner/script.deb.sh | bash && \
     apt-get update -y && \
     apt-get upgrade -y && \
