@@ -1,6 +1,6 @@
 FROM mandu/drone-android511
 
-RUN apt-get install -y debian-keyring debian-archive-keyring && \
+RUN apt-get install -y debian-archive-keyring && \
     apt-get update -y && \
     apt-get install -y curl && \
     curl -s https://packages.gitlab.com/install/repositories/runner/gitlab-ci-multi-runner/script.deb.sh | bash && \
