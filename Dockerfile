@@ -1,9 +1,9 @@
 FROM  tracer0tong/android-emulator
 
-ADD minidemo/ ~/minidemo
-RUN chmod +x ~/minidemo/gradlew && \
-    ~/minidemo/gradlew lint && \
-    rm -rf ~/minidemo
+ADD minidemo/ /root/minidemo
+RUN chmod +x /root/minidemo/gradlew && \
+    /root/minidemo/gradlew lint && \
+    rm -rf /root/minidemo
  
 ADD https://github.com/Yelp/dumb-init/releases/download/v1.0.2/dumb-init_1.0.2_amd64 /usr/bin/dumb-init
 RUN chmod +x /usr/bin/dumb-init
