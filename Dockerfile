@@ -1,4 +1,4 @@
-FROM  android-emulator/Dockerfile
+FROM  tracer0tong/android-emulator
 
 ADD minidemo/ minidemo
 WORKDIR minidemo
