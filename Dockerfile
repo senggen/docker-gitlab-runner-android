@@ -1,14 +1,22 @@
-FROM mandu/drone-android511
+FROM openjdk:8-jdk
 
-RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 04EE7237B7D453EC && \
-    apt-get remove -y libc6-dev && \
-    apt-get update -y && \
-    apt-get upgrade -y && \
-    apt-get install -y curl \
-    curl -s https://packages.gitlab.com/install/repositories/runner/gitlab-ci-multi-runner/script.deb.sh | bash && \
-    apt-get update -y && \
-    apt-get upgrade -y && \
-    apt-get install -y gitlab-ci-multi-runner && \
+ENV ANDROID_COMPILE_SDK "22"
+ENV ANDROID_BUILD_TOOLS "22.0.2"
+ENV ANDROID_SDK_TOOLS   "4333796"
+
+RUN apt-get --quiet update --yes && \
+    apt-get --quiet install --yes wget tar unzip lib32stdc++6 lib32z1 && \
+    wget --quiet --output-document=android-sdk.zip https://dl.google.com/android/repository/sdk-tools-linux-${ANDROID_SDK_TOOLS}.zip && \
+    unzip -d android-sdk-linux android-sdk.zip && \
+    echo y | android-sdk-linux/tools/bin/sdkmanager "platforms;android-${ANDROID_COMPILE_SDK}" >/dev/null && \
+    echo y | android-sdk-linux/tools/bin/sdkmanager "platform-tools" >/dev/null && \
+    echo y | android-sdk-linux/tools/bin/sdkmanager "build-tools;${ANDROID_BUILD_TOOLS}" >/dev/null && \
+    export ANDROID_HOME=$PWD/android-sdk-linux && \
+    export PATH=$PATH:$PWD/android-sdk-linux/platform-tools/ && \
+    chmod +x ./gradlew && \
+    set +o pipefail && \
+    yes | android-sdk-linux/tools/bin/sdkmanager --licenses && \
+    set -o pipefail && \
     apt-get clean && \
     apt-get autoremove -y && \
     rm -rf /var/lib/apt/lists/*
