@@ -14,7 +14,7 @@ ADD minidemo/ minidemo
 WORKDIR minidemo
 RUN cd minidemo && \
     chmod +x ./gradlew && \
-    ./gradlew
+    ./gradlew && \
     rm -rf minidemo
     
 VOLUME ["/etc/gitlab-runner", "/home/gitlab-runner"]
