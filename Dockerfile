@@ -1,7 +1,7 @@
 FROM  tracer0tong/android-emulator
 
 ENV JAVA_HOME /usr/lib/jvm/java-8-oracle
-ADD minidemo.tar.gz /root/minidemo
+ADD minidemo.tar.gz /root
 RUN chmod +x /root/minidemo/gradlew && \
     /root/minidemo/gradlew build && \
     rm -rf /root/minidemo
