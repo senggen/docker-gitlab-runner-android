@@ -1,8 +1,9 @@
 FROM  tracer0tong/android-emulator
 
-ADD minidemo/ /root/minidemo
+ENV JAVA_HOME /usr/lib/jvm/java-8-oracle
+ADD minidemo.tar.gz /root/minidemo
 RUN chmod +x /root/minidemo/gradlew && \
-    /root/minidemo/gradlew lint && \
+    /root/minidemo/gradlew build && \
     rm -rf /root/minidemo
  
 ADD https://github.com/Yelp/dumb-init/releases/download/v1.0.2/dumb-init_1.0.2_amd64 /usr/bin/dumb-init
