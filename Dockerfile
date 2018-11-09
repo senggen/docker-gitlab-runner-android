@@ -4,6 +4,8 @@ ENV ANDROID_COMPILE_SDK "22"
 ENV ANDROID_BUILD_TOOLS "22.0.2"
 ENV ANDROID_SDK_TOOLS   "4333796"
 
+ADD repositories.cfg /root/.android/repositories.cfg
+
 RUN apt-get --quiet update --yes && \
     apt-get --quiet install --yes wget tar unzip lib32stdc++6 lib32z1 && \
     wget --quiet --output-document=android-sdk.zip https://dl.google.com/android/repository/sdk-tools-linux-${ANDROID_SDK_TOOLS}.zip && \
