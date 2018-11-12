@@ -1,6 +1,6 @@
 FROM  tracer0tong/android-emulator
 
-RUN (while sleep 3; do echo "y"; done) | android update sdk --no-ui --all --filter build-tools-26.0.2,android-26,extra-android-m2repository
+RUN (while sleep 3; do echo "y"; done) | android update sdk --no-ui --all --filter build-tools-22.0.2,android-22,extra-android-m2repository
 
 ENV JAVA_HOME /usr/lib/jvm/java-8-oracle
 ADD minidemo.tar.gz /root
