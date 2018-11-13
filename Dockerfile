@@ -16,8 +16,11 @@ RUN apt-get update -y && \
     apt-get install -y gitlab-ci-multi-runner && \
     apt-get clean && \
     apt-get autoremove -y && \
-rm -rf /var/lib/apt/lists/*
+    rm -rf /var/lib/apt/lists/*
+
+ADD run.sh /home/gitlab-runner/run.sh
+RUN chmod +x /home/gitlab-runner/run.sh
     
 VOLUME ["/etc/gitlab-runner", "/home/gitlab-runner"]
-ENTRYPOINT ["/usr/bin/dumb-init", "gitlab-ci-multi-runner"]
+ENTRYPOINT ["/usr/bin/dumb-init", "run.sh"]
 CMD ["run", "--user=root", "--working-directory=/home/gitlab-runner"]
