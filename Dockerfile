@@ -18,5 +18,5 @@ RUN apt-get update -y && \
 ADD run.sh /home/gitlab-runner/run.sh
 RUN chmod +x /home/gitlab-runner/run.sh
     
-ENTRYPOINT ["/home/gitlab-runner/run.sh"]
-CMD ["run", "--user=root", "--working-directory=/home/gitlab-runner"]
+# ENTRYPOINT ["/usr/bin/dumb-init", "--"]
+CMD ["/home/gitlab-runner/run.sh"]
