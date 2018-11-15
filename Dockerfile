@@ -21,5 +21,7 @@ RUN apt-get update -y && \
 
 ADD run.sh /home/gitlab-runner/run.sh
 RUN chmod +x /home/gitlab-runner/run.sh
+
+WORKDIR /home/gitlab-runner
     
-CMD ["/home/gitlab-runner/run.sh"]
+CMD /home/gitlab-runner/run.sh
