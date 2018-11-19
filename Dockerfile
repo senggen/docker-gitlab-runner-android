@@ -13,9 +13,10 @@ RUN apt-get update -y && \
     apt-get autoremove -y && \
     rm -rf /var/lib/apt/lists/*
 
-ADD run.sh /
-RUN chmod +x /run.sh
+RUN mkdir /home
+ADD run.sh /home
+RUN chmod +x /home/run.sh
 
 WORKDIR /home/gitlab-runner
     
-CMD /run.sh
+CMD /home/run.sh
