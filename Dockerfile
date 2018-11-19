@@ -1,11 +1,5 @@
 FROM  senggen/android
 
-ADD minidemo.tar.gz /root
-RUN chmod +x /root/minidemo/gradlew && \
-    /root/minidemo/gradlew build && \
-    rm -rf /root/minidemo
-
-
 ADD https://github.com/Yelp/dumb-init/releases/download/v1.0.2/dumb-init_1.0.2_amd64 /usr/bin/dumb-init
 RUN chmod +x /usr/bin/dumb-init
 
