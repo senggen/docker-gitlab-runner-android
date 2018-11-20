@@ -13,7 +13,6 @@ RUN apt-get update -y && \
     apt-get autoremove -y && \
     rm -rf /var/lib/apt/lists/*
 
-RUN mkdir /home
 ADD run.sh /home
 RUN chmod +x /home/run.sh
 
