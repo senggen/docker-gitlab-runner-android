@@ -9,6 +9,7 @@ RUN apt-get update -y && \
     apt-get update -y && \
     apt-get upgrade -y && \
     apt-get install -y gitlab-ci-multi-runner && \
+    apt-get install -y zip && \
     apt-get clean && \
     apt-get autoremove -y && \
     rm -rf /var/lib/apt/lists/*
